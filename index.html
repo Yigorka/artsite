@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Libre Vault</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Підключення шрифтів для підписів і розділів -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Логотип PNG -->
+    <div class="logo-container">
+        <img src="photo/Group16.svg" alt="Libre Vault">
+    </div>
+
+    <!-- Розділ Картини -->
+    <h2 class="section-title">Art</h2>
+    <div class="gallery">
+        <!-- Картка 1 -->
+        <div class="item">
+            <div class="card" onclick="this.classList.toggle('flipped')">
+                <div class="card-inner">
+                    <div class="card-face card-front">
+                        <img src="photo/CartinaA.png" alt="Картина 1">
+                    </div>
+                    <div class="card-face card-back">
+                        <p>У всього є продовження, навіть в букві "А"</p>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">"Аа" 2025</div>
+        </div>
+
+        <!-- Картка 2 -->
+        <div class="item">
+            <div class="card" onclick="this.classList.toggle('flipped')">
+                <div class="card-inner">
+                    <div class="card-face card-front">
+                        <img src="photo/lohopitek.png" alt="Картина 2">
+                    </div>
+                    <div class="card-face card-back">
+                        <p>Не всі люди еволюціонували</p>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">"Лохопітек" 2025</div>
+        </div>
+
+        <!-- Картка 3 -->
+        <div class="item">
+            <div class="card" onclick="this.classList.toggle('flipped')">
+                <div class="card-inner">
+                    <div class="card-face card-front">
+                        <img src="photo/shliah.png" alt="Картина 3">
+                    </div>
+                    <div class="card-face card-back">
+                        <p>Кожен має свій шлях</p>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">"Шлях" 2025</div>
+        </div>
+
+        <!-- Картка 4 -->
+        <div class="item">
+            <div class="card" onclick="this.classList.toggle('flipped')">
+                <div class="card-inner">
+                    <div class="card-face card-front">
+                        <img src="photo/usmishka.png" alt="Картина 4">
+                    </div>
+                    <div class="card-face card-back">
+                        <p>Більше посмішки</p>
+                    </div>
+                </div>
+            </div>
+            <div class="caption">"Усмішка" 2025</div>
+        </div>
+    </div>
+
+    <!-- Розділ Книги -->
+    <h2 class="section-title">Books</h2>
+    <div class="gallery">
+        <!-- Поки пусто -->
+    </div>
+
+    <!-- Розділ Ігри/додатки -->
+    <h2 class="section-title">Apps/Games</h2>
+    <div class="gallery">
+        <!-- Поки пусто -->
+    </div>
+
+</body>
+
+</html>
