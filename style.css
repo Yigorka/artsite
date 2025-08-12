@@ -1,168 +1,179 @@
-:root {
-    --card-max: 256px;
-    --gap: 16px;
-    --radius: 12px;
-    --caption: #222;
+:root{
+  --card-max: 256px;
+  --gap: 16px;
+  --radius: 12px;
+  --caption: #222;
+  --accent: #444;
 }
 
-* {
-    box-sizing: border-box;
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:'Roboto', sans-serif;
+  background:#f0f0f0;
 }
 
-body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background: #f0f0f0;
+/* Логотип */
+.logo-container{
+  text-align:center;
+  margin:24px 0 8px 0;
+}
+.logo-container img{
+  width:227px;
+  height:auto;
+  max-width:90%;
 }
 
-/* Логотип зверху */
-.logo-container {
-    text-align: center;
-    margin: 24px 0 8px 0;
+/* Кнопка‑заголовок секції */
+.section-toggle{
+  display:block;
+  width:max-content;
+  margin:20px auto 10px;
+  padding:6px 10px;
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  font-family:'Playfair Display', serif;
+  font-size:1.4rem;
+  color:var(--accent);
+  position:relative;
+  outline-offset:4px;
+}
+.section-toggle::after{
+  content:'';
+  position:absolute;
+  left:50%; transform:translateX(-50%);
+  bottom:-8px;
+  width:60px; height:3px;
+  background:var(--accent);
+  border-radius:2px;
+  opacity:0;
+  transform-origin:center;
+  transition:opacity .25s ease, transform .25s ease;
+  transform:translateX(-50%) scaleX(0.2);
+}
+.section-toggle.active::after{
+  opacity:1;
+  transform:translateX(-50%) scaleX(1);
+}
+.section-toggle:hover{ filter:brightness(0.9); }
+
+/* Панель секції (розкриття) */
+.section-panel{
+  overflow:hidden;
+  max-height:0;
+  transition:max-height .35s ease;
 }
 
-.logo-container img {
-    width: 454px;
-    /* 227px * 2 */
-    height: auto;
-    max-width: 90%;
-    /* щоб на мобільних не вилазило */
+/* ---------- ПОЕЛЕМЕНТНА АНІМАЦІЯ ---------- */
+
+/* базовий стан елементів, коли панель закрита */
+.section-panel .item{
+  opacity:0;
+  transform: translateY(20px);
+  transition: opacity .4s ease, transform .4s ease;
 }
 
-/* Заголовки розділів */
-.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    text-align: center;
-    margin: 20px 0 12px;
-    color: #444;
-    position: relative;
+/* коли панель відкрита — елементи входять в кадр */
+.section-panel.open .item{
+  opacity:1;
+  transform: translateY(0);
 }
 
-.section-title::after {
-    content: '';
-    display: block;
-    height: 3px;
-    width: 60px;
-    background: #444;
-    margin: 6px auto 0;
-    border-radius: 2px;
+/* затримки появи по черзі */
+.section-panel.open .item:nth-child(1) { transition-delay: .05s; }
+.section-panel.open .item:nth-child(2) { transition-delay: .10s; }
+.section-panel.open .item:nth-child(3) { transition-delay: .15s; }
+.section-panel.open .item:nth-child(4) { transition-delay: .20s; }
+.section-panel.open .item:nth-child(5) { transition-delay: .25s; }
+.section-panel.open .item:nth-child(6) { transition-delay: .30s; }
+
+/* зворотна поелементна анімація при закритті */
+.section-panel.closing .item{
+  opacity:0;
+  transform: translateY(20px);
+}
+.section-panel.closing .item:nth-child(1) { transition-delay: .30s; }
+.section-panel.closing .item:nth-child(2) { transition-delay: .25s; }
+.section-panel.closing .item:nth-child(3) { transition-delay: .20s; }
+.section-panel.closing .item:nth-child(4) { transition-delay: .15s; }
+.section-panel.closing .item:nth-child(5) { transition-delay: .10s; }
+.section-panel.closing .item:nth-child(6) { transition-delay: .05s; }
+
+/* ---------- ГАЛЕРЕЯ КАРТОК ---------- */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(180px, 256px));
+  gap:var(--gap);
+  justify-content:center;
+  max-width:1600px;
+  margin:0 auto 24px;
+  padding:0 12px;
 }
 
-/* Грід */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 256px));
-    gap: var(--gap);
-    justify-content: center;
-    max-width: 1600px;
-    margin: 0 auto 24px auto;
-    padding: 0 12px;
-}
-
-.item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.item{
+  display:flex; flex-direction:column; align-items:center;
 }
 
 /* Картка */
-.card {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    max-width: var(--card-max);
-    perspective: 1000px;
-    isolation: isolate;
-    transition: transform 0.3s ease;
+.card{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;
+  max-width:var(--card-max);
+  perspective:1000px;
+  isolation:isolate;
+  transition:transform .3s ease;
+}
+.card:hover{ transform:scale(1.03); }
+
+.card-inner{
+  position:relative;
+  width:100%; height:100%;
+  transform-style:preserve-3d;
+  transition:transform .6s;
+  transform-origin:center;
+  cursor:pointer;
+}
+.card.flipped .card-inner{ transform:rotateY(180deg); }
+.card.flipped{ z-index:10; }
+
+.card-face{
+  position:absolute; inset:0;
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:0 6px 16px rgba(0,0,0,.18);
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
 }
 
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform .6s;
-    transform-origin: center;
-    cursor: pointer;
+.card-front img{
+  display:block; width:100%; height:100%; object-fit:cover;
 }
 
-.card.flipped .card-inner {
-    transform: rotateY(180deg);
-}
-
-.card.flipped {
-    z-index: 10;
-}
-
-.card:hover {
-    transform: scale(1.03);
-}
-
-.card-face {
-    position: absolute;
-    inset: 0;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
-.card-front img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.card-back {
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px;
-    text-align: center;
-    line-height: 1.35;
-    font-size: 14px;
-    transform: rotateY(180deg);
+.card-back{
+  background:#fff;
+  display:flex; align-items:center; justify-content:center;
+  padding:14px; text-align:center;
+  line-height:1.35; font-size:14px;
+  transform:rotateY(180deg);
 }
 
 /* Підпис */
-.caption {
-    margin-top: 8px;
-    text-align: center;
-    font-size: 14px;
-    color: var(--caption);
-    max-width: var(--card-max);
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.caption{
+  margin-top:8px; text-align:center; font-size:14px; color:var(--caption);
+  max-width:var(--card-max); width:100%;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 
-@media (min-width: 1024px) {
-    :root {
-        --gap: 12px;
-    }
-}
+/* Щільніше на ноуті */
+@media (min-width:1024px){ :root{ --gap:12px; } }
 
-.logo-container img {
-    width: 227px;
-    /* реальний розмір */
-    height: auto;
-    max-width: 90%;
-    /* щоб на мобільних не вилазило */
-}
-
-
-@media (max-width: 380px) {
-    .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    }
-
-    .card-back,
-    .caption {
-        font-size: 13px;
-    }
+/* Дуже вузькі екрани */
+@media (max-width:380px){
+  .gallery{ grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); }
+  .card-back, .caption{ font-size:13px; }
+  .section-toggle{ font-size:1.3rem; }
 }

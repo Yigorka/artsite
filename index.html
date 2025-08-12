@@ -6,94 +6,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Libre Vault</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Підключення шрифтів для підписів і розділів -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap"
         rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- Логотип PNG -->
+    <!-- Логотип -->
     <div class="logo-container">
         <img src="photo/Group16.svg" alt="Libre Vault">
     </div>
 
-    <!-- Розділ Картини -->
-    <h2 class="section-title">Art</h2>
-    <div class="gallery">
-        <!-- Картка 1 -->
-        <div class="item">
-            <div class="card" onclick="this.classList.toggle('flipped')">
-                <div class="card-inner">
-                    <div class="card-face card-front">
-                        <img src="photo/CartinaA.png" alt="Картина 1">
-                    </div>
-                    <div class="card-face card-back">
-                        <p>У всього є продовження, навіть в букві "А"</p>
+    <!-- ART -->
+    <button class="section-toggle active" data-target="#art" aria-expanded="true">Art</button>
+    <div id="art" class="section-panel open" style="max-height:none">
+        <div class="gallery">
+            <!-- Картка 1 -->
+            <div class="item">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="photo/CartinaA.png" alt="Картина 1">
+                        </div>
+                        <div class="card-face card-back">
+                            <p>В букві "А" є продовження</p>
+                        </div>
                     </div>
                 </div>
+                <div class="caption">"Аа" 2025</div>
             </div>
-            <div class="caption">"Аа" 2025</div>
-        </div>
 
-        <!-- Картка 2 -->
-        <div class="item">
-            <div class="card" onclick="this.classList.toggle('flipped')">
-                <div class="card-inner">
-                    <div class="card-face card-front">
-                        <img src="photo/lohopitek.png" alt="Картина 2">
-                    </div>
-                    <div class="card-face card-back">
-                        <p>Не всі люди еволюціонували</p>
+            <!-- Картка 2 -->
+            <div class="item">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="photo/lohopitek.png" alt="Картина 2">
+                        </div>
+                        <div class="card-face card-back">
+                            <p>еволюція</p>
+                        </div>
                     </div>
                 </div>
+                <div class="caption">"Лохопітек" 2025</div>
             </div>
-            <div class="caption">"Лохопітек" 2025</div>
-        </div>
 
-        <!-- Картка 3 -->
-        <div class="item">
-            <div class="card" onclick="this.classList.toggle('flipped')">
-                <div class="card-inner">
-                    <div class="card-face card-front">
-                        <img src="photo/shliah.png" alt="Картина 3">
-                    </div>
-                    <div class="card-face card-back">
-                        <p>Кожен має свій шлях</p>
+            <!-- Картка 3 -->
+            <div class="item">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="photo/shliah.png" alt="Картина 3">
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Шлях вверх</p>
+                        </div>
                     </div>
                 </div>
+                <div class="caption">"Шлях" 2025</div>
             </div>
-            <div class="caption">"Шлях" 2025</div>
-        </div>
 
-        <!-- Картка 4 -->
-        <div class="item">
-            <div class="card" onclick="this.classList.toggle('flipped')">
-                <div class="card-inner">
-                    <div class="card-face card-front">
-                        <img src="photo/usmishka.png" alt="Картина 4">
-                    </div>
-                    <div class="card-face card-back">
-                        <p>Більше посмішки</p>
+            <!-- Картка 4 -->
+            <div class="item">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="photo/usmishka.png" alt="Картина 4">
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Більше посмішки</p>
+                        </div>
                     </div>
                 </div>
+                <div class="caption">"Усмішка" 2025</div>
             </div>
-            <div class="caption">"Усмішка" 2025</div>
+
+            <!-- Картка 5 -->
+            <div class="item">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="photo/a.jpg" alt="Картина 5">
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Кожен може бути загнаним в куток як ця буква</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="caption">"А в кутку" 2025</div>
+            </div>
         </div>
     </div>
 
-    <!-- Розділ Книги -->
-    <h2 class="section-title">Books</h2>
-    <div class="gallery">
-        <!-- Поки пусто -->
+    <!-- BOOKS -->
+    <button class="section-toggle" data-target="#books" aria-expanded="false">Books</button>
+    <div id="books" class="section-panel">
+        <div class="gallery">
+            <!-- додаси свої елементи -->
+        </div>
     </div>
 
-    <!-- Розділ Ігри/додатки -->
-    <h2 class="section-title">Apps/Games</h2>
-    <div class="gallery">
-        <!-- Поки пусто -->
+    <!-- APPS/GAMES -->
+    <button class="section-toggle" data-target="#apps" aria-expanded="false">Apps/Games</button>
+    <div id="apps" class="section-panel">
+        <div class="gallery">
+            <!-- додаси свої елементи -->
+        </div>
     </div>
 
+    <script>
+        const DURATION = 400; // ms (як у CSS transition)
+        const LAST_DELAY = 300; // ms максимальна затримка для n-го елемента
+        const BUFFER = 80; // запас
+
+        const toggles = document.querySelectorAll('.section-toggle');
+
+        function openPanel(panel, btn) {
+            btn.classList.add('active');
+            btn.setAttribute('aria-expanded', 'true');
+            panel.classList.add('open');
+            panel.classList.remove('closing');
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+            panel.addEventListener('transitionend', function once() {
+                if (panel.classList.contains('open')) panel.style.maxHeight = 'none';
+                panel.removeEventListener('transitionend', once);
+            });
+        }
+
+        function closePanel(panel, btn) {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-expanded', 'false');
+            // запускаємо зворотну поелементну анімацію
+            panel.classList.add('closing');
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+            // після завершення всіх затримок + transition — ховаємо панель
+            setTimeout(() => {
+                panel.classList.remove('open');
+                panel.classList.remove('closing');
+                panel.style.maxHeight = '0px';
+            }, DURATION + LAST_DELAY + BUFFER);
+        }
+
+        toggles.forEach(btn => {
+            const panel = document.querySelector(btn.dataset.target);
+            btn.addEventListener('click', () => {
+                const isOpen = panel.classList.contains('open');
+                if (isOpen) {
+                    closePanel(panel, btn);
+                } else {
+                    openPanel(panel, btn);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
