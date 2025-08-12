@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="uk">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Libre Vault</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-    <!-- Логотип -->
     <div class="logo-container">
         <img src="photo/Group16.svg" alt="Libre Vault">
     </div>
 
-    <!-- ART -->
     <button class="section-toggle active" data-target="#art" aria-expanded="true">Art</button>
     <div id="art" class="section-panel open" style="max-height:none">
         <div class="gallery">
-            <!-- Картка 1 -->
             <div class="item">
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-inner">
@@ -36,7 +30,6 @@
                 <div class="caption">"Аа" 2025</div>
             </div>
 
-            <!-- Картка 2 -->
             <div class="item">
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-inner">
@@ -51,7 +44,6 @@
                 <div class="caption">"Лохопітек" 2025</div>
             </div>
 
-            <!-- Картка 3 -->
             <div class="item">
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-inner">
@@ -66,7 +58,6 @@
                 <div class="caption">"Шлях" 2025</div>
             </div>
 
-            <!-- Картка 4 -->
             <div class="item">
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-inner">
@@ -81,7 +72,6 @@
                 <div class="caption">"Усмішка" 2025</div>
             </div>
 
-            <!-- Картка 5 -->
             <div class="item">
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-inner">
@@ -98,27 +88,34 @@
         </div>
     </div>
 
-    <!-- BOOKS -->
     <button class="section-toggle" data-target="#books" aria-expanded="false">Books</button>
     <div id="books" class="section-panel">
         <div class="gallery">
-            <!-- додаси свої елементи -->
+            <div class="item">
+                <div class="card book-card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="photo/sto.jpg" alt="Book 1">
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Концептуальна книга з ідеєю</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="caption">100(сто)</div>
+            </div>
         </div>
     </div>
 
-    <!-- APPS/GAMES -->
     <button class="section-toggle" data-target="#apps" aria-expanded="false">Apps/Games</button>
     <div id="apps" class="section-panel">
-        <div class="gallery">
-            <!-- додаси свої елементи -->
-        </div>
+        <div class="gallery"></div>
     </div>
 
     <script>
-        const DURATION = 400; // ms (як у CSS transition)
-        const LAST_DELAY = 300; // ms максимальна затримка для n-го елемента
-        const BUFFER = 80; // запас
-
+        const DURATION = 400;
+        const LAST_DELAY = 300;
+        const BUFFER = 80;
         const toggles = document.querySelectorAll('.section-toggle');
 
         function openPanel(panel, btn) {
@@ -136,10 +133,8 @@
         function closePanel(panel, btn) {
             btn.classList.remove('active');
             btn.setAttribute('aria-expanded', 'false');
-            // запускаємо зворотну поелементну анімацію
             panel.classList.add('closing');
             panel.style.maxHeight = panel.scrollHeight + 'px';
-            // після завершення всіх затримок + transition — ховаємо панель
             setTimeout(() => {
                 panel.classList.remove('open');
                 panel.classList.remove('closing');
@@ -160,5 +155,4 @@
         });
     </script>
 </body>
-
 </html>
