@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ук">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,10 +9,27 @@
 </head>
 <body>
 
-    <div class="logo-container">
-        <img src="photo/Group16.svg" alt="Libre Vault">
-    </div>
+    <!-- Напівпрозорий хедер: лого по центру, бургер справа -->
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <div class="header-spacer"></div>
+            <div class="logo-container header-logo" aria-label="Libre Vault">
+                <img src="photo/Group16.svg" alt="Libre Vault">
+            </div>
+            <button class="burger" id="burger-btn" aria-label="Меню" aria-expanded="false" aria-controls="burger-menu">
+                <span></span><span></span><span></span>
+            </button>
 
+            <!-- Випадаюче меню бургеру -->
+            <nav class="burger-menu" id="burger-menu" role="navigation">
+                <button class="menu-item" data-target="#art">Art</button>
+                <button class="menu-item" data-target="#books">Books</button>
+                <button class="menu-item" data-target="#apps">Apps/Games</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- КНОПКИ СЕКЦІЙ (залишаються) -->
     <button class="section-toggle active" data-target="#art" aria-expanded="true">Art</button>
     <div id="art" class="section-panel open" style="max-height:none">
         <div class="gallery">
@@ -113,6 +130,7 @@
     </div>
 
     <script>
+        // ====== АКОРДЕОН СЕКЦІЙ (твоя логіка) ======
         const DURATION = 400;
         const LAST_DELAY = 300;
         const BUFFER = 80;
@@ -150,6 +168,52 @@
                     closePanel(panel, btn);
                 } else {
                     openPanel(panel, btn);
+                    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ====== БУРГЕР ======
+        const burgerBtn  = document.getElementById('burger-btn');
+        const burgerMenu = document.getElementById('burger-menu');
+
+        function closeBurger() {
+            burgerMenu.classList.remove('show');
+            burgerBtn.classList.remove('open');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        burgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            burgerMenu.classList.toggle('show');
+            burgerBtn.classList.toggle('open');
+            burgerBtn.setAttribute('aria-expanded', burgerBtn.classList.contains('open') ? 'true' : 'false');
+        });
+
+        // Закриття поза меню
+        document.addEventListener('click', (e) => {
+            if (!burgerMenu.contains(e.target) && !burgerBtn.contains(e.target)) closeBurger();
+        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeBurger(); });
+
+        // Пункти меню: якщо панель вже відкрита — не закриваємо, лише скролимо.
+        // Якщо закрита — відкриваємо (як натисканням на кнопку секції).
+        burgerMenu.querySelectorAll('.menu-item').forEach(mi => {
+            mi.addEventListener('click', () => {
+                const targetSel = mi.getAttribute('data-target');
+                const panel = document.querySelector(targetSel);
+                const btn = document.querySelector(`.section-toggle[data-target="${targetSel}"]`);
+
+                if (panel && btn) {
+                    const alreadyOpen = panel.classList.contains('open');
+                    if (!alreadyOpen) {
+                        // відкриваємо як через кнопку (зберігаємо твою анімацію/логіку)
+                        openPanel(panel, btn);
+                    }
+                    closeBurger();
+                    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    closeBurger();
                 }
             });
         });
