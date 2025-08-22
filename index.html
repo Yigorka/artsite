@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Libre Vault</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
   <header class="site-header" role="banner">
     <div class="header-inner">
@@ -115,6 +118,35 @@
         </div>
         <div class="caption" data-i18n="art.items.eight.caption">"8" 2025</div>
       </div>
+
+      <div class="item">
+        <div class="card" onclick="this.classList.toggle('flipped')">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <img src="photo/Alife.png" alt="Картина 6">
+            </div>
+            <div class="card-face card-back">
+              <p data-i18n="art.items.alife.desc"></p>
+            </div>
+          </div>
+        </div>
+        <div class="caption" data-i18n="art.items.alife.caption">"Штучне життя" 2025</div>
+      </div>
+
+      <div class="item">
+        <div class="card" onclick="this.classList.toggle('flipped')">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <img src="photo/NoName.png" alt="Картина 6">
+            </div>
+            <div class="card-face card-back">
+              <p data-i18n="art.items.noname.desc"></p>
+            </div>
+          </div>
+        </div>
+        <div class="caption" data-i18n="art.items.noname.caption">"Без назви" 2025</div>
+      </div>
+
     </div>
   </div>
 
@@ -232,7 +264,9 @@
             path: { caption: '"Path" 2025', desc: 'Path up' },
             smile: { caption: '"Smile" 2025', desc: 'More smile' },
             corner: { caption: '"A in the corner" 2025', desc: 'Anyone can be cornered like this letter' },
-            eight: { caption: '"8" 2025', desc: '8' }
+            eight: { caption: '"8" 2025', desc: '8' },
+            alife: { caption: '"Artificial life" 2025', desc: '' },
+            noname: { caption: '"untitled" 2025', desc: '' }
           }
         },
         books: { items: { sto: { caption: '100 (one hundred)', desc: 'A conceptual book with an idea' } } }
@@ -246,7 +280,9 @@
             path: { caption: '"Шлях" 2025', desc: 'Шлях вверх' },
             smile: { caption: '"Усмішка" 2025', desc: 'Більше посмішки' },
             corner: { caption: '"А в кутку" 2025', desc: 'Кожен може бути загнаним в куток як ця буква' },
-            eight: { caption: '"8" 2025', desc: '8' }
+            eight: { caption: '"8" 2025', desc: '8' },
+            alife: { caption: '"Штучне життя" 2025', desc: '' },
+            noname: { caption: '"Без назви" 2025', desc: '' }
           }
         },
         books: { items: { sto: { caption: '100(сто)', desc: 'Концептуальна книга з ідеєю' } } }
@@ -280,4 +316,5 @@
     setLang(localStorage.getItem('site_lang') || 'uk');
   </script>
 </body>
+
 </html>
